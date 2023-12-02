@@ -19,13 +19,12 @@ numbers = {
     "9": 9,
 }
 
-sum = 0
-
-a = []
+input = []
 
 with open("input.txt") as file:
     for line in file:
-        a.append(line.rstrip())
+        input.append(line.rstrip())
+
 
 def get_number(line):
     s1 = 0
@@ -33,7 +32,7 @@ def get_number(line):
 
     e1 = len(line)
     e2 = len(line)
-    
+
     while True:
         if line[s1:s2] in numbers:
             break
@@ -54,7 +53,10 @@ def get_number(line):
 
     return numbers[line[s1:s2]] * 10 + numbers[line[e1:e2]]
 
-for item in a:
+
+sum = 0
+
+for item in input:
     sum += get_number(item)
 
 print(sum)

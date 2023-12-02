@@ -1,46 +1,44 @@
 import re
 
-a = []
+input = []
 
 with open("input.txt") as file:
     for line in file:
-        a.append(line.rstrip())
+        input.append(line.rstrip())
 
-n = set()
+games = set()
+for id in range(len(input)):
+    games.add(id + 1)
 
-for i in range(len(a)):
-    n.add(i + 1)
+for num, item in enumerate(input):
+    game, cubes = item.split(":")
+    round = cubes.split(";")
 
-for num, item in enumerate(a):
-    x, y = item.split(":")
-
-    z = y.split(";")
-
-    for i in z:
-        blue_matches = re.findall(r"(\d+)\s+blue", i)
-        if blue_matches and int(blue_matches[0]) > 14:
+    for hand in round:
+        blue = re.findall(r"(\d+)\s+blue", hand)
+        if blue and int(blue[0]) > 14:
             try:
-                n.remove(num + 1)
+                games.remove(num + 1)
             except KeyError:
                 continue
 
-        red_matches = re.findall(r"(\d+)\s+red", i)
-        if red_matches and int(red_matches[0]) > 12:
+        red = re.findall(r"(\d+)\s+red", hand)
+        if red and int(red[0]) > 12:
             try:
-                n.remove(num + 1)
+                games.remove(num + 1)
             except KeyError:
                 continue
 
-        green_matches = re.findall(r"(\d+)\s+green", i)
-        if green_matches and int(green_matches[0]) > 13:
+        green = re.findall(r"(\d+)\s+green", hand)
+        if green and int(green[0]) > 13:
             try:
-                n.remove(num + 1)
+                games.remove(num + 1)
             except KeyError:
                 continue
 
 sum = 0
 
-for i in n:
-    sum += i
+for id in games:
+    sum += id
 
 print(sum)

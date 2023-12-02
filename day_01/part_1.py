@@ -1,20 +1,21 @@
-a = []
+input = []
+
+with open("input.txt") as file:
+    for line in file:
+        input.append(line.rstrip())
+
 sum = 0
 
-with open("./input.txt") as file:
-    for line in file:
-        a.append(line.rstrip())
+for item in input:
+    start = 0
+    end = len(item) - 1
 
-for item in a:
-    s = 0
-    e = len(item) - 1
+    while not item[start].isnumeric():
+        start += 1
 
-    while not item[s].isnumeric():
-        s += 1
+    while not item[end].isnumeric():
+        end -= 1
 
-    while not item[e].isnumeric():
-        e -= 1
-
-    sum += int(item[s]) * 10 + int(item[e])
+    sum += int(item[start]) * 10 + int(item[end])
 
 print(sum)
