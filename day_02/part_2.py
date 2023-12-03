@@ -15,15 +15,15 @@ for num, item in enumerate(input):
     games[num + 1] = [0, 0, 0]
 
     for hand in round:
-        blue = re.findall(r"(\d+)\s+blue", hand)
+        blue = re.findall(r"(\d+) blue", hand)
         if blue and games[num + 1][0] < int(blue[0]):
             games[num + 1][0] = int(blue[0])
 
-        red = re.findall(r"(\d+)\s+red", hand)
+        red = re.findall(r"(\d+) red", hand)
         if red and games[num + 1][1] < int(red[0]):
             games[num + 1][1] = int(red[0])
 
-        green = re.findall(r"(\d+)\s+green", hand)
+        green = re.findall(r"(\d+) green", hand)
         if green and games[num + 1][2] < int(green[0]):
             games[num + 1][2] = int(green[0])
 

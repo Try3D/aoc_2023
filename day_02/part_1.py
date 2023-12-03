@@ -15,21 +15,21 @@ for num, item in enumerate(input):
     round = cubes.split(";")
 
     for hand in round:
-        blue = re.findall(r"(\d+)\s+blue", hand)
+        blue = re.findall(r"(\d+) blue", hand)
         if blue and int(blue[0]) > 14:
             try:
                 games.remove(num + 1)
             except KeyError:
                 continue
 
-        red = re.findall(r"(\d+)\s+red", hand)
+        red = re.findall(r"(\d+) red", hand)
         if red and int(red[0]) > 12:
             try:
                 games.remove(num + 1)
             except KeyError:
                 continue
 
-        green = re.findall(r"(\d+)\s+green", hand)
+        green = re.findall(r"(\d+) green", hand)
         if green and int(green[0]) > 13:
             try:
                 games.remove(num + 1)
