@@ -17,10 +17,10 @@ def destination(seed):
 
             while input[line] != "":
                 if line >= len(input) - 1:
-                    map.append(input[line].split(" "))
+                    map.append(input[line].split())
                     line += 1
                     break
-                map.append(input[line].split(" "))
+                map.append(input[line].split())
                 line += 1
 
             mappings.append(map)

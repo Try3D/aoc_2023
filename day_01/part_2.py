@@ -25,25 +25,26 @@ with open("input.txt") as file:
     for line in file:
         input.append(line.rstrip())
 
+sum = 0
 
-def get_number(line):
+for item in input:
     s1 = 0
     s2 = 0
 
-    e1 = len(line)
-    e2 = len(line)
+    e1 = len(item)
+    e2 = len(item)
 
     while True:
-        if line[s1:s2] in numbers:
+        if item[s1:s2] in numbers:
             break
-        elif s2 > len(line) - 1:
+        elif s2 > len(item) - 1:
             s1 += 1
             s2 = s1
         else:
             s2 += 1
 
     while True:
-        if line[e1:e2] in numbers:
+        if item[e1:e2] in numbers:
             break
         elif e1 < 0:
             e2 -= 1
@@ -51,12 +52,6 @@ def get_number(line):
         else:
             e1 -= 1
 
-    return numbers[line[s1:s2]] * 10 + numbers[line[e1:e2]]
-
-
-sum = 0
-
-for item in input:
-    sum += get_number(item)
+    sum += numbers[item[s1:s2]] * 10 + numbers[item[e1:e2]]
 
 print(sum)

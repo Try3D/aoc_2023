@@ -1,64 +1,69 @@
-from math import sqrt
-
 input = []
 
 with open("input.txt") as file:
     for line in file:
         input.append(line.rstrip())
 
+seeds = []
+s = []
+for n, number in enumerate(input[0].lstrip("seeds: ").split()):
+    if n % 2:
+        s.append(s[0] + int(number))
+        seeds.append(s)
+        s = []
+    else:
+        s.append(int(number))
 
-def destionation(seed):
-    mappings = []
+line = 1
+while line < len(input):
+    if input[line] == "":
+        line += 2
 
-    line = 1
-    while line < len(input):
-        if input[line] == "":
-            line += 2
+        map = []
 
-            map = []
-
-            while input[line] != "":
-                if line >= len(input) - 1:
-                    map.append(input[line].split(" "))
-                    line += 1
-                    break
-                map.append(input[line].split(" "))
+        while input[line] != "":
+            if line >= len(input) - 1:
+                map.append(input[line].split())
                 line += 1
-
-            mappings.append(map)
-
-    for map in mappings:
-        for values in map:
-            if int(values[1]) <= int(seed) and int(seed) < int(values[1]) + int(values[2]):
-                seed = int(values[0]) + int(seed) - int(values[1])
                 break
+            map.append(input[line].split())
+            line += 1
 
-    return seed
+        new_seeds = []
+        
+        while len(seeds):
+            i = seeds[0]
+            seeds.remove(i)
 
+            s = i[0]
+            e = i[1]
 
-seeds = input[0].lstrip("seeds: ").split()
+            flag = 1
+            for m in map:
+                a = int(m[0])
+                b = int(m[1])
+                c = int(m[2])
 
-pairs = [[int(seeds[i]), int(seeds[i + 1])] for i in range(0, len(seeds), 2)]
+                os = max(s, b)
+                oe = min(e, b + c)
 
-iter = 0
-for i in pairs:
-    iter += i[1]
-jumps = int(sqrt(iter))
+                if os < oe:
+                    new_seeds.insert(len(new_seeds), [os - b + a, oe - b + a])
+                    if os > s:
+                        seeds.insert(len(new_seeds), [s, os])
+                    if oe < e:
+                        seeds.insert(len(new_seeds), [oe, e])
+                    flag = 0
+                    break
+
+            if flag:
+                new_seeds.insert(len(new_seeds), [s, e])
+
+        seeds = new_seeds
 
 lowest = -1
-lowest_range = -1
-
-for i in pairs:
-    for j in range(i[0], i[0] + i[1]):
-        if j % jumps == 0:
-            iter = destionation(j)
-            if lowest < 0 or destionation(j) < lowest:
-                lowest = iter
-                lowest_range = j
-
-for i in range(lowest_range - jumps, lowest_range + jumps):
-    iter = destionation(i)
-    if destionation(i) < lowest:
-        lowest = iter
+for seed in seeds:
+    if lowest < 0 or seed[0] < lowest:
+        lowest = seed[0]
 
 print(lowest)
