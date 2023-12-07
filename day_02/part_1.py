@@ -6,9 +6,7 @@ with open("input.txt") as file:
     for line in file:
         input.append(line.rstrip())
 
-games = set()
-for id in range(len(input)):
-    games.add(id + 1)
+games = {id + 1 for id in range(len(input))}
 
 for num, item in enumerate(input):
     game, cubes = item.split(":")

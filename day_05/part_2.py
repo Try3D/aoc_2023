@@ -32,8 +32,7 @@ while line < len(input):
         new_seeds = []
         
         while len(seeds):
-            i = seeds[0]
-            seeds.remove(i)
+            i = seeds.pop()
 
             s = i[0]
             e = i[1]
@@ -48,16 +47,16 @@ while line < len(input):
                 oe = min(e, b + c)
 
                 if os < oe:
-                    new_seeds.insert(len(new_seeds), [os - b + a, oe - b + a])
+                    new_seeds.append([os - b + a, oe - b + a])
                     if os > s:
-                        seeds.insert(len(new_seeds), [s, os])
+                        seeds.append([s, os])
                     if oe < e:
-                        seeds.insert(len(new_seeds), [oe, e])
+                        seeds.append([oe, e])
                     flag = 0
                     break
 
             if flag:
-                new_seeds.insert(len(new_seeds), [s, e])
+                new_seeds.append([s, e])
 
         seeds = new_seeds
 
