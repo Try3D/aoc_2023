@@ -1,8 +1,5 @@
-input = []
-
-with open('input.txt') as file:
-    for line in file:
-        input.append(line.rstrip())
+with open("input.txt") as file:
+    input = [line.rstrip() for line in file]
 
 list1 = []
 list2 = []
@@ -15,8 +12,8 @@ for card in input:
     list1.append(s1.split(" "))
     list2.append(s2.split(" "))
 
-list1 = [[elem for elem in sublist if elem != ''] for sublist in list1]
-list2 = [[elem for elem in sublist if elem != ''] for sublist in list2]
+list1 = [[elem for elem in sublist if elem != ""] for sublist in list1]
+list2 = [[elem for elem in sublist if elem != ""] for sublist in list2]
 
 
 def get_cards(hand):

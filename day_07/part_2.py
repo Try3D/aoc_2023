@@ -24,8 +24,7 @@ class Cards:
             if len(highest_cards) == 1:
                 self.count[highest_cards[0]] += no_of_J
             else:
-                highest_cards.sort(
-                    key=lambda x: self.priority[x], reverse=True)
+                highest_cards.sort(key=lambda x: self.priority[x], reverse=True)
                 self.count[highest_cards[0]] += no_of_J
 
     def __gt__(self, other):
@@ -69,11 +68,8 @@ class Cards:
     }
 
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 cards = []
 points = []

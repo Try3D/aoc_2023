@@ -1,8 +1,5 @@
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 
 def destination(seed):
@@ -27,7 +24,9 @@ def destination(seed):
 
     for map in mappings:
         for values in map:
-            if int(values[1]) <= int(seed) and int(seed) < int(values[1]) + int(values[2]):
+            if int(values[1]) <= int(seed) and int(seed) < int(values[1]) + int(
+                values[2]
+            ):
                 seed = int(values[0]) + int(seed) - int(values[1])
                 break
 

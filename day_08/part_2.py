@@ -1,11 +1,8 @@
 import re
 from math import lcm
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 nav = input[0]
 

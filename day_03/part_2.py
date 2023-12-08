@@ -8,7 +8,12 @@ class Coordinates:
 
         for i in range(-1, 2):
             for j in range(-1, 2):
-                if self.x + i >= 0 and self.x + i < len(input[0]) and self.y + j >= 0 and self.y + j < len(input):
+                if (
+                    self.x + i >= 0
+                    and self.x + i < len(input[0])
+                    and self.y + j >= 0
+                    and self.y + j < len(input)
+                ):
                     adjacents.append(Coordinates(self.x + i, self.y + j))
 
         return adjacents
@@ -17,11 +22,8 @@ class Coordinates:
         return self.x == other.x and self.y == other.y
 
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 num_cords = []
 

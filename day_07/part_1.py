@@ -50,11 +50,8 @@ class Card:
     }
 
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 cards = []
 points = []
@@ -63,7 +60,6 @@ for card in input:
     hand, point = card.split()
     cards.append(Card(hand))
     points.append(int(point))
-
 
 for i in range(len(cards) - 1):
     for j in range(len(cards) - i - 1):

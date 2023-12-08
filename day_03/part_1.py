@@ -7,7 +7,12 @@ class Coordinates:
         adjacents = []
         for i in range(-1, 2):
             for j in range(-1, 2):
-                if (self.x + i >= 0) and self.x + i < len(input[0]) and self.y + j >= 0 and self.y + j < len(input):
+                if (
+                    (self.x + i >= 0)
+                    and self.x + i < len(input[0])
+                    and self.y + j >= 0
+                    and self.y + j < len(input)
+                ):
                     adjacents.append(Coordinates(self.x + i, self.y + j))
         return adjacents
 
@@ -15,11 +20,8 @@ class Coordinates:
         return self.x == other.x and self.y == other.y
 
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 num_cord = []
 
@@ -40,7 +42,7 @@ adj_num = []
 
 for y in range(len(input)):
     for x in range(len(input[0])):
-        if input[y][x] in {'*', '&', '-', '%', '+', '#', '=', '$', '@', '/'}:
+        if input[y][x] in {"*", "&", "-", "%", "+", "#", "=", "$", "@", "/"}:
             cord = Coordinates(x, y)
             for number in num_cord:
                 if number[0] in cord.get_adjacent() or number[1] in cord.get_adjacent():

@@ -1,10 +1,7 @@
 import re
 
-input = []
-
 with open("input.txt") as file:
-    for line in file:
-        input.append(line.rstrip())
+    input = [line.rstrip() for line in file]
 
 games = dict()
 
@@ -30,6 +27,6 @@ for num, item in enumerate(input):
 sum = 0
 
 for id in games:
-    sum += (games[id][0] * games[id][1] * games[id][2])
+    sum += games[id][0] * games[id][1] * games[id][2]
 
 print(sum)
