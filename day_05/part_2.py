@@ -28,7 +28,7 @@ while line < len(input):
 
         new_seeds = []
 
-        while len(seeds):
+        while seeds:
             i = seeds.pop()
 
             s = i[0]

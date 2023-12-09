@@ -17,7 +17,7 @@ cur = [location for location in directions if location.endswith("A")]
 n = 1
 end_len = []
 
-while len(cur):
+while cur:
     for dir in nav:
         new_cur = []
         for path in cur:

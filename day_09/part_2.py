@@ -5,7 +5,7 @@ input = [[int(i) for i in line] for line in input]
 
 
 def find_prev(seq):
-    if not len(seq):
+    if not seq:
         return 0
 
     pred = [seq[i + 1] - seq[i] for i in range(len(seq) - 1)]

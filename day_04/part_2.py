@@ -28,7 +28,7 @@ def get_cards(hand):
 queue = [i + 1 for i in range(len(input))]
 points = 0
 
-while len(queue):
+while queue:
     queue += get_cards(queue.pop())
     points += 1
 

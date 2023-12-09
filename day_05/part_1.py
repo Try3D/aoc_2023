@@ -30,7 +30,7 @@ def destination(seed):
                 seed = int(values[0]) + int(seed) - int(values[1])
                 break
 
-    return seed
+    return str(seed)
 
 
 seeds = input[0].lstrip("seeds: ").split()
