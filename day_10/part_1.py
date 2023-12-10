@@ -10,7 +10,6 @@ class Coordinates:
 with open("input.txt") as file:
     input = [line.rstrip() for line in file]
 
-
 start = Coordinates(0, 0)
 for y in range(len(input)):
     for x in range(len(input[0])):

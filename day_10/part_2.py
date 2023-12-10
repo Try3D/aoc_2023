@@ -21,9 +21,9 @@ def main():
             if input[y][x] == "S":
                 start = Coordinates(x, y)
 
-    matrix = ["" for _ in range(len(input) * 3)]
-
     main_loop = path(start)
+
+    matrix = ["" for _ in range(len(input) * 3)]
 
     set_matrix(matrix, main_loop)
 
@@ -99,18 +99,18 @@ def set_matrix(matrix, loop):
                 l1 = " # "
                 l2 = " ##"
                 l3 = "   "
-            elif Coordinates(x, y) in loop and input[y][x] == "J":
-                l1 = " # "
-                l2 = "## "
-                l3 = "   "
-            elif Coordinates(x, y) in loop and input[y][x] == "7":
-                l1 = "   "
-                l2 = "## "
-                l3 = " # "
             elif Coordinates(x, y) in loop and input[y][x] in ["F", "S"]:
                 l1 = "   "
                 l2 = " ##"
                 l3 = " # "
+            elif Coordinates(x, y) in loop and input[y][x] == "7":
+                l1 = "   "
+                l2 = "## "
+                l3 = " # "
+            elif Coordinates(x, y) in loop and input[y][x] == "J":
+                l1 = " # "
+                l2 = "## "
+                l3 = "   "
             else:
                 l1 = "   "
                 l2 = " . "
